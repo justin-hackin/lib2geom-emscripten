@@ -36,7 +36,7 @@ find_package(PkgConfig REQUIRED)
 find_package(Cython)
 find_package(Threads)
 pkg_check_modules(GTK3 gtk+-3.0)
-find_package(GLIB REQUIRED)
+find_package(GLib REQUIRED)
 find_package(GSL REQUIRED)
 pkg_check_modules(CAIRO cairo)
 
