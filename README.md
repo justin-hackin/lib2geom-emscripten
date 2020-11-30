@@ -1,3 +1,46 @@
+_This is an experimental fork of the repository at https://gitlab.com/inkscape/lib2geom/ for the purposes of building lib2geom with emscripten._ 
+
+Changes:
+- clobber toys and other cairo-dependent code
+- emscripten build script
+
+## Dependencies build instructions
+
+These steps assume the user has installed, activated and sourced emsdk.
+
+```
+git clone https://github.com/ampl/gsl.git && cd gsl
+# NO_AMPL_BINDINGS because emscripten has issues building  gsl submodule AMPL bindings 
+# (arith.h placed as sibling of include folder instead of inside it)
+emcmake cmake . -DNO_AMPL_BINDINGS=ON && make
+
+cd ..
+git clone https://github.com/google/double-conversion.git 
+cd double-conversion
+emcmake cmake . && make
+
+cd ..
+# from https://github.com/emscripten-core/emscripten/issues/11066#issuecomment-624636388
+# VET THIS CODE then follow instructions here
+# https://gist.github.com/kleisauke/acfa1c09522705efa5eb0541d2d00887#file-readme-md
+
+git clone https://gitlab.com/inkscape/lib2geom.git
+cd cd lib2geom
+emcmake cmake . \
+    -DDoubleConversion_INCLUDE_DIR:PATH=${LIBS_DIR}/double-conversion/ \
+    -DDoubleConversion_LIBRARY:FILEPATH=${LIBS_DIR}/double-conversion/libdouble-conversion.a \
+    -DGLIB_INCLUDE_DIR:PATH=${LIBS_DIR}/glib-emscripten/target/include \
+    -DGLIB_LIBRARY:FILEPATH=${LIBS_DIR}/glib-emscripten/target/lib/libglib-2.0.a \
+    -DGSL_INCLUDE_DIR:PATH=${LIBS_DIR}/gsl \
+    -DGSL_LIBRARY:FILEPATH=${LIBS_DIR}/gsl/libgsl.a \
+    -DGSL_CBLAS_LIBRARY:FILEPATH=${LIBS_DIR}/gsl/libgslcblas.a \
+    -D2GEOM_TESTING=OFF \
+    -DCMAKE_CXX_FLAGS="-sUSE_BOOST_HEADERS=1" \
+    -DCMAKE_C_FLAGS="-sUSE_BOOST_HEADERS=1" \
+&& make
+cd ..
+```
+
 # 2Geom: easy 2D graphics library
 
 ## What is this?
