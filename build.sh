@@ -1,6 +1,5 @@
 #!/bin/sh
 emcmake cmake . \
-    -DCMAKE_PREFIX_PATH="${LIBS_DIR}/glib-emscripten/target/lib/pkgconfig" \
     -DDoubleConversion_INCLUDE_DIR:PATH=${LIBS_DIR}/double-conversion/ \
     -DDoubleConversion_LIBRARY:FILEPATH=${LIBS_DIR}/double-conversion/libdouble-conversion.a \
     -DGLib_INCLUDE_DIRS:PATH=${LIBS_DIR}/glib-emscripten/target/include/glib-2.0 \
