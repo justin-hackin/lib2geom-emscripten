@@ -2,8 +2,8 @@
 emcmake cmake . \
     -DDoubleConversion_INCLUDE_DIR:PATH=${LIBS_DIR}/double-conversion/ \
     -DDoubleConversion_LIBRARY:FILEPATH=${LIBS_DIR}/double-conversion/libdouble-conversion.a \
-    -DGLib_INCLUDE_DIRS:PATH=${LIBS_DIR}/glib-emscripten/target/include/glib-2.0 \
-    -DGLib_LIBRARY:FILEPATH=${LIBS_DIR}/glib-emscripten/target/lib/libglib-2.0.a \
+    -DGLIB_PKG_INCLUDE_DIRS:PATH=${LIBS_DIR}/glib-emscripten/target/ \
+    -DGLIB_PKG_LIBRARY_DIRS:FILEPATH=${LIBS_DIR}/glib-emscripten/target/lib/libglib-2.0.a \
     -DGSL_INCLUDE_DIR:PATH=${LIBS_DIR}/gsl \
     -DGSL_LIBRARY:FILEPATH=${LIBS_DIR}/gsl/libgsl.a \
     -DGSL_CBLAS_LIBRARY:FILEPATH=${LIBS_DIR}/gsl/libgslcblas.a \
