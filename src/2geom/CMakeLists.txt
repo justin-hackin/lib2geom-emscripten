@@ -28,7 +28,6 @@ add_library(2geom ${LIB_TYPE}
     bezier-curve.cpp
     bezier-utils.cpp
 
-    cairo-path-sink.cpp
     circle.cpp
     concepts.cpp
     conicsec.cpp
@@ -94,7 +93,6 @@ add_library(2geom ${LIB_TYPE}
     ${2GEOM_INCLUDE_DIR}/2geom/bezier-to-sbasis.h
     ${2GEOM_INCLUDE_DIR}/2geom/bezier-utils.h
 
-    ${2GEOM_INCLUDE_DIR}/2geom/cairo-path-sink.h
     ${2GEOM_INCLUDE_DIR}/2geom/choose.h
     ${2GEOM_INCLUDE_DIR}/2geom/circle.h
     ${2GEOM_INCLUDE_DIR}/2geom/concepts.h
