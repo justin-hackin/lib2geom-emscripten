@@ -1,5 +1,10 @@
 #!/bin/sh
-emcmake cmake . \
+export LIBS_DIR="$(realpath ../)"
+rm -rf build/
+mkdir build
+cd build
+emcmake cmake .. \
+    -DCMAKE_FIND_ROOT_PATH=${LIBS_DIR} \
     -DDoubleConversion_INCLUDE_DIR:PATH=${LIBS_DIR}/double-conversion/ \
     -DDoubleConversion_LIBRARY:FILEPATH=${LIBS_DIR}/double-conversion/libdouble-conversion.a \
     -DGLIB_DIR:PATH=${LIBS_DIR}/glib-emscripten/target/ \

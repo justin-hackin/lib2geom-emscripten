@@ -24,21 +24,10 @@ cd ..
 # VET THIS CODE then follow instructions here
 # https://gist.github.com/kleisauke/acfa1c09522705efa5eb0541d2d00887#file-readme-md
 
-git clone https://gitlab.com/inkscape/lib2geom.git
-cd cd lib2geom
-emcmake cmake . \
-    -DDoubleConversion_INCLUDE_DIR:PATH=${LIBS_DIR}/double-conversion/ \
-    -DDoubleConversion_LIBRARY:FILEPATH=${LIBS_DIR}/double-conversion/libdouble-conversion.a \
-    -DGLIB_INCLUDE_DIR:PATH=${LIBS_DIR}/glib-emscripten/target/include \
-    -DGLIB_LIBRARY:FILEPATH=${LIBS_DIR}/glib-emscripten/target/lib/libglib-2.0.a \
-    -DGSL_INCLUDE_DIR:PATH=${LIBS_DIR}/gsl \
-    -DGSL_LIBRARY:FILEPATH=${LIBS_DIR}/gsl/libgsl.a \
-    -DGSL_CBLAS_LIBRARY:FILEPATH=${LIBS_DIR}/gsl/libgslcblas.a \
-    -D2GEOM_TESTING=OFF \
-    -DCMAKE_CXX_FLAGS="-sUSE_BOOST_HEADERS=1" \
-    -DCMAKE_C_FLAGS="-sUSE_BOOST_HEADERS=1" \
-&& make
-cd ..
+git clone https://github.com/justin-hackin/lib2geom-emscripten.git
+cd cd lib2geom-emscripten
+chmod +x build.sh
+./build.sh
 ```
 
 # 2Geom: easy 2D graphics library
